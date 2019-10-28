@@ -11,7 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    testShared 'abc'
+                    testShared.info 'hello'
+                    testShared.warning 'world'
                 }
             }
         }
