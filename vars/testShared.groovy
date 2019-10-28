@@ -4,5 +4,6 @@ def info(message) {
 
 def warning(message) {
     echo "WARNING: ${message}"
-		echo $DOCKER_DEV_REGISTRY
+		println(this.env.DOCKER_DEV_REGISTRY)
+		println(env.DOCKER_DEV_REGISTRY)
 }
