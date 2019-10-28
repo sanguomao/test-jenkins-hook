@@ -20,10 +20,14 @@ pipeline {
 
     post {
         success {
-            sendDingTalk("success", "构建成功")
+            script {
+                testShared.sendDingTalk("success", "构建成功")
+            }
         }
         failure {
-            sendDingTalk("failure", "构建失败")
+            script {
+                testShared.sendDingTalk("failure", "构建失败")
+            }
         }
     }
 }
