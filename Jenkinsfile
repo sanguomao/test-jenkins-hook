@@ -1,4 +1,4 @@
-@library('test-lib') _
+@Library('test-lib') _
 
 pipeline {
     agent any
@@ -9,8 +9,10 @@ pipeline {
 
     stages {
         stage('Build') {
-            script {
-                testShared 'abc'
+            steps {
+                script {
+                    testShared 'abc'
+                }
             }
         }
     }
