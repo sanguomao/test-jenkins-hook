@@ -14,6 +14,7 @@ pipeline {
                     testShared.info 'hello'
                     testShared.warning 'world'
                 }
+                testShared.info 'try'
             }
         }
     }
