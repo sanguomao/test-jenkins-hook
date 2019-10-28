@@ -20,11 +20,11 @@ pipeline {
     }
 
     post {
-    success {
-        sendDingTalk("success", "构建成功")
-    }
-    failure {
-        sendDingTalk("failure", "构建失败")
+        success {
+            sendDingTalk("success", "构建成功")
+        }
+        failure {
+            sendDingTalk("failure", "构建失败")
+        }
     }
 }
-
