@@ -13,7 +13,7 @@ pipeline {
                 script {
                     testShared.info 'hello'
                     testShared.warning 'world'
-                    testShared.getRepoName
+                    testShared.getRepoName()
                 }
             }
         }
