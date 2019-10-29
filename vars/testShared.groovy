@@ -1,7 +1,4 @@
-GIT_SHORT_COMMIT = """${sh(
-    returnStdout: true,
-    script: 'git rev-parse --short HEAD',
-).trim()}"""
+
 DOCKER_IMAGE_BUILD_VERSION = "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
 
 def info(message) {
@@ -18,9 +15,19 @@ String getRepoName() {
 	def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
 
 	println(repoName)
-	println(GIT_SHORT_COMMIT)
-	println(DOCKER_IMAGE_BUILD_VERSION)
+	println(getShortCommit())
+	println(getDockerImageBuildVersion())
 	return repoName
+}
+
+String getShortCommit() {
+	def GIT_SHORT_COMMIT = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+	return GIT_SHORT_COMMIT
+}
+
+String getDockerImageBuildVersion() {
+	def GIT_SHORT_COMMIT = getShortCommit()
+	return "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
 }
 
 // def sendDingTalk(status, message) {
