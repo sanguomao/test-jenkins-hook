@@ -7,6 +7,11 @@ def warning(message) {
 		println(this.env.DOCKER_DEV_REGISTRY)
 }
 
+def getRepoName() {
+	repoName = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
+	return repoName
+}
+
 // def sendDingTalk(status, message) {
 //     if (status == "success") {
 //         img="https://s2.ax1x.com/2019/10/17/KEFSWd.png"
