@@ -9,7 +9,9 @@ def warning(message) {
 
 String getRepoName() {
 	def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
-	def repoName = repoUrl.split('/')[-1].split('.')[0]
+	def repoSplit = repoUrl.split('/')
+	def repoName1 = repoSplit[-1].split('.')
+	def repoName = repoName1[0]
 
 	println(repoName)
 	return repoName
