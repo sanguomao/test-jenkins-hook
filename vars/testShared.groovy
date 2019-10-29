@@ -1,8 +1,8 @@
-def GIT_SHORT_COMMIT = """${sh(
+GIT_SHORT_COMMIT = """${sh(
     returnStdout: true,
     script: 'git rev-parse --short HEAD',
 ).trim()}"""
-def DOCKER_IMAGE_BUILD_VERSION = "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
+DOCKER_IMAGE_BUILD_VERSION = "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
 
 def info(message) {
     echo "INFO: ${message}"
