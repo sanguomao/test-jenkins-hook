@@ -3,6 +3,10 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: "PROD_VERSION", description: "the tag of the image,src to release, like `1.2.3`")
+    }
+
     environment {
         DOCKER_DEV_REGISTRY="https://harbor.longguikeji.com"
     }
