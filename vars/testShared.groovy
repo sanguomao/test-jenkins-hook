@@ -1,3 +1,9 @@
+def GIT_SHORT_COMMIT = """${sh(
+    returnStdout: true,
+    script: 'git rev-parse --short HEAD',
+).trim()}"""
+def DOCKER_IMAGE_BUILD_VERSION = "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
+
 def info(message) {
     echo "INFO: ${message}"
 }
@@ -9,11 +15,11 @@ def warning(message) {
 
 String getRepoName() {
 	def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
-	def repoSplit = repoUrl.split('/')
-	def repoName1 = repoSplit[-1].split('.')
-	def repoName = repoName1[0]
+	def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
 
 	println(repoName)
+	println(GIT_SHORT_COMMIT)
+	println(DOCKER_IMAGE_BUILD_VERSION)
 	return repoName
 }
 
