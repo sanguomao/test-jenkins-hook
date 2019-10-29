@@ -25,39 +25,105 @@ def warning(message) {
 //     ])
 // }
 
-def call(String lang) {
-  pipeline {
-    agent any
+def call(String buildType) {
+	if (buildType == 'build') {
+		pipeline {
+			agent any
 
-    environment {
-        DOCKER_DEV_REGISTRY="https://harbor.longguikeji.com"
-    }
+			environment {
+					DOCKER_DEV_REGISTRY="https://harbor.longguikeji.com"
+			}
 
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    info 'hello'
-                    warning 'world'
-                }
-            }
-        }
-    }
+			stages {
+					stage('Build') {
+							steps {
+									script {
+											info 'hello'
+											warning 'world'
+									}
+							}
+					}
+			}
 
-    post {
-        success {
-            script {
-                sendDingTalk("success", "构建成功")
-            }
-        }
-        failure {
-            script {
-                sendDingTalk("failure", "构建失败")
-            }
-        }
-    }
+			post {
+					success {
+							script {
+									sendDingTalk("success", "构建成功")
+							}
+					}
+					failure {
+							script {
+									sendDingTalk("failure", "构建失败")
+							}
+					}
+			}
+		}
+	} else if(buildType == 'status') {
+		pipeline {
+			agent any
+
+			environment {
+					DOCKER_DEV_REGISTRY="https://status.longguikeji.com"
+			}
+
+			stages {
+					stage('status') {
+							steps {
+									script {
+											info 'hello'
+											warning 'world'
+									}
+							}
+					}
+			}
+
+			post {
+					success {
+							script {
+									sendDingTalk("success", "status构建成功")
+							}
+					}
+					failure {
+							script {
+									sendDingTalk("failure", "status构建失败")
+							}
+					}
+			}
+		}
+
+	} else {
+		pipeline {
+			agent any
+
+			environment {
+					DOCKER_DEV_REGISTRY="https://release.longguikeji.com"
+			}
+
+			stages {
+					stage('release') {
+							steps {
+									script {
+											info 'hello'
+											warning 'world'
+									}
+							}
+					}
+			}
+
+			post {
+					success {
+							script {
+									sendDingTalk("success", "release构建成功")
+							}
+					}
+					failure {
+							script {
+									sendDingTalk("failure", "release构建失败")
+							}
+					}
+			}
+		}
 	}
-
 }
 
 def sendDingTalk(status, message) {
