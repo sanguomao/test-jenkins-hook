@@ -11,9 +11,9 @@ def getRepoName() {
 	def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
 	def repoUrlSplit = repoUrl.split('/')
 	println(repoUrl)
-	println(repoUrlSplit[0])
+	println(repoUrlSplit[-1])
 	println(repoUrlSplit)
-	return repoName
+	return repoUrlSplit[-1]
 }
 
 // def sendDingTalk(status, message) {
