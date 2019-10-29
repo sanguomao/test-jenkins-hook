@@ -7,13 +7,12 @@ def warning(message) {
 		println(this.env.DOCKER_DEV_REGISTRY)
 }
 
-def getRepoName() {
+String getRepoName() {
 	def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
-	def repoUrlSplit = repoUrl.split('/')
-	println(repoUrl)
-	println(repoUrlSplit[-1])
-	println(repoUrlSplit)
-	return repoUrlSplit[-1]
+	def repoName = repoUrl.split('/')[-1].split('.')[0]
+
+	println(repoName)
+	return repoName
 }
 
 // def sendDingTalk(status, message) {
