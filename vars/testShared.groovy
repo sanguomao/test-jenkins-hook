@@ -13,8 +13,15 @@ def warning(message) {
 String getRepoName() {
 		def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
 		def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
-
-		println(this.params.PROD_VERSION)
+		script {
+			env.TEMP_LOG = """${sh(
+					returnStdout: true,
+					script: 'mktemp',
+			)}
+			"""
+    }
+		println(env.TEMP_LOG)
+		println(params.PROD_VERSION)
 		println(repoName)
 		return repoName
 }
