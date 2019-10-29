@@ -14,8 +14,9 @@ String getRepoName() {
 	// def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
 	// def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
 	// return repoName
-	repoUrl = sh "git config --get remote.origin.url > .git/remote-url"
-	return repoUrl
+		repoUrl = sh "git config --get remote.origin.url > .git/remote-url"
+		println(repoUrl)
+		return repoUrl
 }
 
 String getShortCommitForBuild() {
