@@ -11,22 +11,23 @@ def warning(message) {
 }
 
 String getRepoName() {
-	def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
-	def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
-
+	// def repoUrl = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
+	// def repoName = repoUrl.tokenize('/')[-1].tokenize('.')[0]
+	// return repoName
+	repoName = sh(
+			returnStdout: true,
+			script: "git remote show origin -n |  grep h.URL | sed 's/.*://;s/.git//' ",
+	).trim()
 	println(repoName)
-	println(getShortCommit())
-	println(getDockerImageBuildVersion())
-	return repoName
 }
 
-String getShortCommit() {
+String getShortCommitForBuild() {
 	def GIT_SHORT_COMMIT = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
 	return GIT_SHORT_COMMIT
 }
 
 String getDockerImageBuildVersion() {
-	def GIT_SHORT_COMMIT = getShortCommit()
+	def GIT_SHORT_COMMIT = getShortCommitForBuild()
 	return "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
 }
 
