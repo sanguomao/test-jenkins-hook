@@ -6,8 +6,11 @@ def info(message) {
 }
 
 def warning(message) {
-    echo "WARNING: ${message}"
-		println(this.env.DOCKER_DEV_REGISTRY)
+    warn = sh(
+        returnStdout: true,
+        script: "git remote show origin -n |  grep h.URL | sed 's/.*://;s/.git//' ",
+    ).trim()
+		println(warn)
 }
 
 String getRepoName() {
