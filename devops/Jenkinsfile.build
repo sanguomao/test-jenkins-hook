@@ -1,0 +1,28 @@
+@Library('longgui-ci') _
+
+pipeline {
+    agent any
+
+    stages {
+        stage('pre') {
+            steps {
+                commonFunctions.sendDingTalk("pending", "开始构建")
+                commonFunctions.replacePyPIRegistry()
+            }
+        }
+        stage('build') {
+            steps {
+                commonFunctions.makeDevImage('', '')
+            }
+        }
+    }
+    post {
+        success {
+            commonFunctions.sendDingTalk("success", "构建成功")
+        }
+        failure {
+            commonFunctions.sendDingTalk("failure", "构建失败")
+        }
+    }
+}
+
