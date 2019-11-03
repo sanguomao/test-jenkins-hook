@@ -42,3 +42,5 @@ docker-prod-push:
 	docker push harbor.longguikeji.com/ark-releases/test-jenkins-hook:$(VERSION)
 
 include custom.Makefile
+
+aa
