@@ -1,7 +1,7 @@
 
 env.DOCKER_IMAGE_BUILD_VERSION = getDockerImageBuildVersion()
 DOCKER_IMAGE_BUILD_VERSION=getDockerImageBuildVersion()
-b = getb()
+b = getDockerImageBuildVersion()
 
 String getb() {
 	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
@@ -15,7 +15,7 @@ String getShortCommitForBuild() {
 
 String getDockerImageBuildVersion() {
     def GIT_SHORT_COMMIT = getShortCommitForBuild()
-
+		println(GIT_SHORT_COMMIT)
     return "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
 }
 
