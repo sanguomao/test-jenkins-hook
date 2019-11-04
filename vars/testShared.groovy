@@ -1,7 +1,7 @@
 
 // env.docker_image_build_version = getDockerImageBuildVersion()
 // docker_image_build_version=getDockerImageBuildVersion()
-docker = getDockerImageBuildVersion()
+dockerImage = getDockerImageBuildVersion()
 
 String getb() {
 	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
@@ -23,9 +23,9 @@ def info(message) {
     echo "INFO: ${message}"
 		// def docker_image_build_version="abc"
 		// println(env.docker_image_build_version)
-		println(docker)
+		println(dockerImage)
 		sh """#!/bin/bash
-		echo ${docker}
+		echo ${dockerImage}
 		"""
 }
 
