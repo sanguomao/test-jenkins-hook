@@ -41,16 +41,6 @@ String getRepoName() {
 		return repoName
 }
 
-String getShortCommitForBuild() {
-	def GIT_SHORT_COMMIT = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-	return GIT_SHORT_COMMIT
-}
-
-String getDockerImageBuildVersion() {
-	def GIT_SHORT_COMMIT = getShortCommitForBuild()
-	return "build-${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
-}
-
 // def sendDingTalk(status, message) {
 //     if (status == "success") {
 //         img="https://s2.ax1x.com/2019/10/17/KEFSWd.png"
