@@ -1,6 +1,6 @@
 
-env.DOCKER_IMAGE_BUILD_VERSION = getDockerImageBuildVersion()
-DOCKER_IMAGE_BUILD_VERSION=getDockerImageBuildVersion()
+// env.DOCKER_IMAGE_BUILD_VERSION = getDockerImageBuildVersion()
+// DOCKER_IMAGE_BUILD_VERSION=getDockerImageBuildVersion()
 b = getDockerImageBuildVersion()
 
 String getb() {
