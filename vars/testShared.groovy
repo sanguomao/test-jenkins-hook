@@ -24,10 +24,9 @@ def info(message) {
 		// def docker_image_build_version="abc"
 		// println(env.docker_image_build_version)
 		println(docker)
-		// sh """#!/bin/bash
-		// echo ${env.docker_image_build_version}
-		// echo ${docker_image_build_version}
-		// """
+		sh """#!/bin/bash
+		echo ${docker}
+		"""
 }
 
 def warning(message) {
