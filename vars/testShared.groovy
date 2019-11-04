@@ -12,9 +12,12 @@ String getDockerImageBuildVersion() {
 
 def info(message) {
     echo "INFO: ${message}"
-		sh """#!/bin/bash
+		// sh """#!/bin/bash
+		// echo ${DOCKER_IMAGE_BUILD_VERSION}
+		// """
+		sh(returnStdout: true, script: """#!/bin/bash
 		echo ${DOCKER_IMAGE_BUILD_VERSION}
-		"""
+		""").trim()
 }
 
 def warning(message) {
