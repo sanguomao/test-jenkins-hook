@@ -1,13 +1,14 @@
 
 // env.docker_image_build_version = getDockerImageBuildVersion()
 // docker_image_build_version=getDockerImageBuildVersion()
-b = getDockerImageBuildVersion()
+// b = getDockerImageBuildVersion()
 
-// String getb() {
-// 	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-// 	println(d)
-// 	return d
-// }
+String getb() {
+	println("enter")
+	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+	println(d)
+	return d
+}
 
 String getShortCommitForBuild() {
 	  return sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
