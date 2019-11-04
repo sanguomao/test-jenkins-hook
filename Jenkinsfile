@@ -1,4 +1,4 @@
-@Library('longgui-ci') _
+@Library('test-lib') _
 
 pipeline {
     agent any
