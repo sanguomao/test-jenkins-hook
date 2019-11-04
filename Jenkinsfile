@@ -7,7 +7,7 @@ pipeline {
         stage('ci'){
             steps{
                 script {
-                    testShared.info()
+                    testShared.info "test"
                 }
             }
         }
