@@ -13,6 +13,10 @@ String getDOCKER_IMAGE_BUILD_VERSION() {
     return "build-${env.BUILD_NUMBER}-${comm}"
 }
 
+String getA() {
+	return "def"
+}
+
 def info(message) {
     echo "INFO: ${message}"
 		println(a)
