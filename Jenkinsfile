@@ -12,11 +12,7 @@ pipeline {
             }
         }
     }
-    post {
-        always {
 
-        }
-    }
 }
 
 
