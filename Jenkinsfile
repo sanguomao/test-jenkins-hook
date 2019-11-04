@@ -7,7 +7,7 @@ pipeline {
         stage('ci'){
             steps{
                 script {
-                    commonFunctions.info()
+                    testShared.info()
                 }
             }
         }
