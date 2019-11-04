@@ -1,13 +1,13 @@
 
 env.DOCKER_IMAGE_BUILD_VERSION = getDockerImageBuildVersion()
-DOCKER_IMAGE_BUILD_VERSION = getDockerImageBuildVersion()
+DOCKER_IMAGE_BUILD_VERSION=getDockerImageBuildVersion()
 b = getDockerImageBuildVersion()
 
-// String getb() {
-// 	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-// 	println(d)
-// 	return d
-// }
+String getb() {
+	d = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+	println(d)
+	return d
+}
 
 String getShortCommitForBuild() {
 	  return sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
@@ -20,11 +20,10 @@ String getDockerImageBuildVersion() {
 }
 
 def info(message) {
-    // echo "INFO: ${message}"
+    echo "INFO: ${message}"
 		// def DOCKER_IMAGE_BUILD_VERSION="abc"
 		// println(env.DOCKER_IMAGE_BUILD_VERSION)
 		println(b)
-		println(DOCKER_IMAGE_BUILD_VERSION)
 		// sh """#!/bin/bash
 		// echo ${env.DOCKER_IMAGE_BUILD_VERSION}
 		// echo ${DOCKER_IMAGE_BUILD_VERSION}
